@@ -8,7 +8,7 @@ const props = defineProps({
   // Configuration du logo
   logoSrc: {
     type: String,
-    default: '/src/assets/kumajala.jpg' // Chemin mis à jour pour Vite
+    default: 'src/assets/kumajala.jpg' // Chemin mis à jour pour Vite
   },
 
   logoAlt: {
@@ -820,3 +820,4 @@ watch(() => route.path, () => {
 }
 
 </style>
+
