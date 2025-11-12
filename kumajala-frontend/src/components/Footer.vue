@@ -6,7 +6,7 @@
           <a href="https://github.com/Frejuste26" target="_blank">Kei Prince Frejuste</a>
         </li>
         <li>
-          <a href="https://github.com/nango-vital" target="_blank">Nango Ebrotié Vital</a>
+          <a href="https://github.com/EbroVital" target="_blank">Nango Ebrottié Vital</a>
         </li>
         <li>
           <a href="https://github.com/sannetia" target="_blank">Sanné-Tia Chrys</a>
@@ -42,4 +42,5 @@
 .site-footer a:hover {
   color: var(--cl-primary);
 }
+
 </style>
