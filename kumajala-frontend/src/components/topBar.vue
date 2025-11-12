@@ -8,7 +8,7 @@ const props = defineProps({
   // Configuration du logo
   logoSrc: {
     type: String,
-    default: '/src/assets/logo.png' // Chemin mis à jour pour Vite
+    default: '/src/assets/kumajala.jpg' // Chemin mis à jour pour Vite
   },
 
   logoAlt: {
@@ -818,4 +818,5 @@ watch(() => route.path, () => {
   outline: 2px solid var(--cl-primary);
   outline-offset: 2px;
 }
+
 </style>
