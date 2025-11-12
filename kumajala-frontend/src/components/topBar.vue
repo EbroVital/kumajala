@@ -13,7 +13,7 @@ const props = defineProps({
 
   logoAlt: {
     type: String,
-    default: ''
+    default: 'Logo kumajala'
   },
 
   logoHeight: {
