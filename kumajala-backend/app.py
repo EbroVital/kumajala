@@ -79,5 +79,7 @@ if __name__ == '__main__':
     # host='0.0.0.0' rend l'application accessible depuis n'importe quelle adresse IP
     # port=5000 est le port par défaut de Flask
     # debug=True active le mode débogage (rechargement automatique, messages d'erreur détaillés)
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
+
 
