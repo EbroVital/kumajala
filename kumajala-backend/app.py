@@ -70,10 +70,12 @@ def create_app():
         return jsonify({'error': 'Erreur interne du serveur', 'details': str(error)}), 500
     
     return app
+    
+app = create_app()
 
 if __name__ == '__main__':
     # Crée l'application Flask
-    app = create_app()
+   
     
     # Lance le serveur Flask
     # host='0.0.0.0' rend l'application accessible depuis n'importe quelle adresse IP
@@ -81,5 +83,6 @@ if __name__ == '__main__':
     # debug=True active le mode débogage (rechargement automatique, messages d'erreur détaillés)
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
+
 
 
