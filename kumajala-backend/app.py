@@ -19,7 +19,10 @@ def create_app():
     
     # Configuration CORS pour permettre les requêtes depuis le frontend Vue.js
     # Assurez-vous que 'http://localhost:5173' est l'URL de votre frontend en développement.
-    CORS(app, origins=['http://localhost:5173'])
+    CORS(app, origins=[
+        'http://localhost:5173',  
+        'https://kumajala-ten.vercel.app/'  
+    ])
     
     # Configuration de l'application Flask
     # La clé secrète est utilisée pour la sécurité des sessions, etc.
@@ -77,3 +80,4 @@ if __name__ == '__main__':
     # port=5000 est le port par défaut de Flask
     # debug=True active le mode débogage (rechargement automatique, messages d'erreur détaillés)
     app.run(host='0.0.0.0', port=5000, debug=True)
+
