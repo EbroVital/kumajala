@@ -4,7 +4,7 @@ import axios from 'axios';
 // Si votre backend Flask tourne sur localhost:5000 et que votre frontend est sur un port différent,
 // vous devrez utiliser l'URL complète ici.
 // Assurez-vous que cette URL correspond à celle de votre backend.
-const API_BASE_URL = 'http://localhost:5000/kumajala-api/v1'; // Ajustez si votre base URL est différente
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://kumajala-backend.onrender.com/kumajala-api/v1'; // Ajustez si votre base URL est différente
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -25,3 +25,4 @@ apiClient.interceptors.response.use(
 );
 
 export default apiClient;
+
