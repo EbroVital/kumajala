@@ -74,15 +74,16 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-    # Crée l'application Flask
-   
     
+    # Crée l'application Flask
     # Lance le serveur Flask
     # host='0.0.0.0' rend l'application accessible depuis n'importe quelle adresse IP
     # port=5000 est le port par défaut de Flask
     # debug=True active le mode débogage (rechargement automatique, messages d'erreur détaillés)
+    
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
+
 
 
 
