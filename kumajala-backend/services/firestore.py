@@ -4,27 +4,16 @@ from google.cloud import firestore
 import json
 
 class FirestoreService:
+
     def __init__(self):
         # Initialisation du client Firestore
         creds_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS_JSON')
-    
-        if creds_json:
-            try:
-                # Écrire temporairement le JSON dans un fichier
-                with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-                    f.write(creds_json)
-                    temp_path = f.name
-                
-                os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = temp_path
-                
-                self.db = firestore.Client()
-                self.use_local_data = False
-                print("✅ Service Firestore initialisé avec succès (credentials depuis variable d'env).")
-            except Exception as e:
-                print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
-                self.use_local_data = True
-                self.load_local_translations()
-        elif os.getenv('GOOGLE_APPLICATION_CREDENTIALS'):
+        
+        if not creds_json:
+            print("⚠️ GOOGLE_APPLICATION_CREDENTIALS non définie. Utilisation des données locales.")
+            self.use_local_data = True
+            self.load_local_translations()
+        else:
             try:
                 self.db = firestore.Client()
                 self.use_local_data = False
@@ -33,11 +22,7 @@ class FirestoreService:
                 print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
                 self.use_local_data = True
                 self.load_local_translations()
-        else:
-            print("⚠️ GOOGLE_APPLICATION_CREDENTIALS non définie. Utilisation des données locales.")
-            self.use_local_data = True
-            self.load_local_translations()
-    
+
         # Métadonnées des langues (hardcodées pour le MVP du hackathon)
         self._language_metadata = {
             'bété': {'code': 'bété', 'name': 'Bété', 'region': 'Côte d\'Ivoire', 'code_gtts': 'fr'},
@@ -260,5 +245,6 @@ class FirestoreService:
         # Retourne simplement les valeurs du dictionnaire _language_metadata
         # Trié par nom de langue pour un affichage cohérent
         return sorted(self._language_metadata.values(), key=lambda x: x['name'])
+
 
 
