@@ -8,20 +8,38 @@ class FirestoreService:
     def __init__(self):
         # Initialisation du client Firestore
         creds_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS_JSON')
-        
-        if not creds_json:
-            print("⚠️ GOOGLE_APPLICATION_CREDENTIALS non définie. Utilisation des données locales.")
-            self.use_local_data = True
-            self.load_local_translations()
-        else:
+    
+        if creds_json:
             try:
+                # Écrire temporairement le JSON dans un fichier
+                with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+                    f.write(creds_json)
+                    temp_path = f.name
+            
+                # Configurer la variable d'environnement pour que Firestore la trouve
+                os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = temp_path
+                
+                # Maintenant initialiser Firestore
                 self.db = firestore.Client()
                 self.use_local_data = False
-                print("✅ Service Firestore initialisé avec succès.")
+                print("✅ Service Firestore initialisé avec succès (credentials depuis variable d'env).")
             except Exception as e:
                 print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
                 self.use_local_data = True
                 self.load_local_translations()
+        elif os.getenv('GOOGLE_APPLICATION_CREDENTIALS'):
+            try:
+                self.db = firestore.Client()
+                self.use_local_data = False
+                print("✅ Service Firestore initialisé avec succès (chemin fichier credentials).")
+            except Exception as e:
+                print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
+                self.use_local_data = True
+                self.load_local_translations()
+        else:
+            print("⚠️ GOOGLE_APPLICATION_CREDENTIALS non définie. Utilisation des données locales.")
+            self.use_local_data = True
+            self.load_local_translations()
 
         # Métadonnées des langues (hardcodées pour le MVP du hackathon)
         self._language_metadata = {
@@ -31,7 +49,6 @@ class FirestoreService:
             'agni': {'code': 'agni', 'name': 'Agni', 'region': 'Côte d\'Ivoire', 'code_gtts': 'fr'},
             'fr': {'code': 'fr', 'name': 'Français', 'region': 'Global', 'code_gtts': 'fr'}
         }
-
 
     def load_local_translations(self):
         """Charge les traductions depuis le fichier JSON local (data/language.json)."""
@@ -245,6 +262,7 @@ class FirestoreService:
         # Retourne simplement les valeurs du dictionnaire _language_metadata
         # Trié par nom de langue pour un affichage cohérent
         return sorted(self._language_metadata.values(), key=lambda x: x['name'])
+
 
 
 
