@@ -160,7 +160,12 @@ class FirestoreService:
         if self.use_local_data:
             return self._get_local_translation(text_lower, target_language)
         else:
-            return self._get_firestore_translation(text_lower, target_language)
+            result = self._get_firestore_translation(text_lower, target_language)
+            if result is None :
+                print(f"DEBUG: Pas trouvé dans Firestore, fallback vers données locales pour '{text_lower}'")
+                return self._get_local_translation(text_lower, target_language)
+            return result
+                
 
     def _get_local_translation(self, text_lower, target_language):
         """Récupère une traduction depuis les données locales"""
@@ -262,6 +267,7 @@ class FirestoreService:
         # Retourne simplement les valeurs du dictionnaire _language_metadata
         # Trié par nom de langue pour un affichage cohérent
         return sorted(self._language_metadata.values(), key=lambda x: x['name'])
+
 
 
 
