@@ -8,6 +8,7 @@ class FirestoreService:
     def __init__(self):
         # Initialisation du client Firestore
         creds_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS_JSON')
+        self.load_local_translations()
     
         if creds_json:
             try:
@@ -21,25 +22,25 @@ class FirestoreService:
                 
                 # Maintenant initialiser Firestore
                 self.db = firestore.Client()
-                self.use_local_data = True
+                self.use_local_data = False
                 print("✅ Service Firestore initialisé avec succès (credentials depuis variable d'env).")
             except Exception as e:
                 print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
                 self.use_local_data = True
-                self.load_local_translations()
+                # self.load_local_translations()
         elif os.getenv('GOOGLE_APPLICATION_CREDENTIALS'):
             try:
                 self.db = firestore.Client()
-                self.use_local_data = True
+                self.use_local_data = False
                 print("✅ Service Firestore initialisé avec succès (chemin fichier credentials).")
             except Exception as e:
                 print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
                 self.use_local_data = True
-                self.load_local_translations()
+                # self.load_local_translations()
         else:
             print("⚠️ GOOGLE_APPLICATION_CREDENTIALS non définie. Utilisation des données locales.")
             self.use_local_data = True
-            self.load_local_translations()
+            # self.load_local_translations()
 
         # Métadonnées des langues (hardcodées pour le MVP du hackathon)
         self._language_metadata = {
@@ -267,6 +268,7 @@ class FirestoreService:
         # Retourne simplement les valeurs du dictionnaire _language_metadata
         # Trié par nom de langue pour un affichage cohérent
         return sorted(self._language_metadata.values(), key=lambda x: x['name'])
+
 
 
 
