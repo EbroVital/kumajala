@@ -21,7 +21,7 @@ class FirestoreService:
                 
                 # Maintenant initialiser Firestore
                 self.db = firestore.Client()
-                self.use_local_data = False
+                self.use_local_data = True
                 print("✅ Service Firestore initialisé avec succès (credentials depuis variable d'env).")
             except Exception as e:
                 print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
@@ -30,7 +30,7 @@ class FirestoreService:
         elif os.getenv('GOOGLE_APPLICATION_CREDENTIALS'):
             try:
                 self.db = firestore.Client()
-                self.use_local_data = False
+                self.use_local_data = True
                 print("✅ Service Firestore initialisé avec succès (chemin fichier credentials).")
             except Exception as e:
                 print(f"❌ Erreur connexion Firestore: {e}. Fallback vers les données locales.")
@@ -267,6 +267,7 @@ class FirestoreService:
         # Retourne simplement les valeurs du dictionnaire _language_metadata
         # Trié par nom de langue pour un affichage cohérent
         return sorted(self._language_metadata.values(), key=lambda x: x['name'])
+
 
 
 
