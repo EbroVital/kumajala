@@ -2,13 +2,14 @@
 import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { Home as HomeIcon, Info as InfoIcon, Search as SearchIcon, Sun as SunIcon, Moon as MoonIcon, ArrowRight as ArrowRightIcon, Settings as SettingsIcon } from 'lucide-vue-next'; // Import des icônes
-
+import logoImage from '@/assets/kumajala.jpg'
+  
 // Props
 const props = defineProps({
   // Configuration du logo
   logoSrc: {
     type: String,
-    default: '/src/assets/kumajala.jpg' // Chemin mis à jour pour Vite
+    default: logoImage // Chemin mis à jour pour Vite
   },
 
   logoAlt: {
@@ -820,6 +821,7 @@ watch(() => route.path, () => {
 }
 
 </style>
+
 
 
 
