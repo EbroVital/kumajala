@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from routes.translate import translate_bp
 from routes.speak import speak_bp
 from routes.languages import languages_bp
+from routes.contact import contact_bp
 
 # Charger les variables d'environnement depuis un fichier .env
 load_dotenv()
@@ -36,6 +37,7 @@ def create_app():
     app.register_blueprint(translate_bp, url_prefix='/kumajala-api/v1')
     app.register_blueprint(speak_bp, url_prefix='/kumajala-api/v1')
     app.register_blueprint(languages_bp, url_prefix='/kumajala-api/v1')
+    app.register_blueprint(contact_bp, url_prefix='/kumajala-api/v1')
     
     # Route de base pour tester l'API et fournir des informations générales
     @app.route('/')
@@ -50,6 +52,7 @@ def create_app():
                 'translate': '/kumajala-api/v1/translate',
                 'speak': '/kumajala-api/v1/speak',
                 'languages': '/kumajala-api/v1/languages',
+                'contact': '/kumajala-api/v1/contact',
                 'manage_translations': '/kumajala-api/v1/translations/manage' # Ajout de l'endpoint de gestion
             }
         })

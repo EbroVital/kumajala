@@ -269,9 +269,94 @@ class FirestoreService:
         # Trié par nom de langue pour un affichage cohérent
         return sorted(self._language_metadata.values(), key=lambda x: x['name'])
 
+    def save_contact_message(self, contact_data):
+        """
+        Sauvegarde un message de contact dans Firestore ou localement.
+        
+        Args:
+            contact_data (dict): Données du formulaire de contact
+                {
+                    'name': str,
+                    'email': str,
+                    'subject': str,
+                    'message': str,
+                    'timestamp': str,
+                    'status': str
+                }
+        
+        Returns:
+            str: ID du document créé
+        """
+        if self.use_local_data:
+            # Mode local: sauvegarder dans un fichier JSON
+            return self._save_contact_local(contact_data)
+        else:
+            # Mode Firestore
+            return self._save_contact_firestore(contact_data)
+    
+    def _save_contact_local(self, contact_data):
+        """Sauvegarde un message de contact localement"""
+        try:
+            script_dir = os.path.dirname(__file__)
+            contacts_path = os.path.join(script_dir, '..', 'data', 'contacts.json')
+            
+            # Charger les contacts existants
+            contacts = []
+            if os.path.exists(contacts_path):
+                with open(contacts_path, 'r', encoding='utf-8') as f:
+                    contacts = json.load(f)
+            
+            # Générer un ID simple
+            contact_id = f"contact_{len(contacts) + 1}"
+            contact_data['id'] = contact_id
+            
+            # Ajouter le nouveau contact
+            contacts.append(contact_data)
+            
+            # Sauvegarder
+            os.makedirs(os.path.dirname(contacts_path), exist_ok=True)
+            with open(contacts_path, 'w', encoding='utf-8') as f:
+                json.dump(contacts, f, ensure_ascii=False, indent=2)
+            
+            print(f"INFO: Message de contact sauvegardé localement avec ID: {contact_id}")
+            return contact_id
+            
+        except Exception as e:
+            print(f"❌ Erreur lors de la sauvegarde locale du contact: {e}")
+            raise e
+    
+    def _save_contact_firestore(self, contact_data):
+        """Sauvegarde un message de contact dans Firestore"""
+        try:
+            # Ajouter le document à la collection 'contacts'
+            doc_ref = self.db.collection('contacts').add(contact_data)
+            contact_id = doc_ref[1].id
+            print(f"INFO: Message de contact sauvegardé dans Firestore avec ID: {contact_id}")
+            return contact_id
+            
+        except Exception as e:
+            print(f"❌ Erreur lors de la sauvegarde Firestore du contact: {e}")
+            raise e
 
 
+# Instance globale du service Firestore
+firestore_service = FirestoreService()
 
+# Fonctions helper pour l'import dans les routes
+def get_translation(text, target_language):
+    return firestore_service.get_translation(text, target_language)
+
+def save_translation(text, target_language, translation):
+    return firestore_service.save_translation(text, target_language, translation)
+
+def get_supported_languages():
+    return firestore_service.get_supported_languages()
+
+def update_translation_manual(french_text, target_language, new_translation):
+    return firestore_service.update_translation_manual(french_text, target_language, new_translation)
+
+def save_contact_message(contact_data):
+    return firestore_service.save_contact_message(contact_data)
 
 
 
