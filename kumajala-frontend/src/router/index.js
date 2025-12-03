@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Translator from '@/views/Translator.vue';
-import Setting from '@/views/Setting.vue'; 
+import Setting from '@/views/Setting.vue';
 import About from '@/views/About.vue';
 import History from '@/views/History.vue';
+import Contact from '@/views/Contact.vue';
 
 const routes = [
   {
@@ -17,7 +18,7 @@ const routes = [
     component: Translator,
   },
   {
-    path: '/settings', 
+    path: '/settings',
     name: 'Settings',
     component: Setting,
   },
@@ -30,6 +31,11 @@ const routes = [
     path: '/history',
     name: 'History',
     component: History,
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
   },
 ];
 

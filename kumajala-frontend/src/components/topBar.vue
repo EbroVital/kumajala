@@ -14,6 +14,7 @@ const props = defineProps({
       { name: 'Accueil', path: '/', icon: HomeIcon },
       { name: 'À Propos', path: '/about', icon: InfoIcon },
       { name: 'Traducteur', path: '/translator', icon: null },
+      { name: 'Contact', path: '/contact', icon: null },
       { name: 'Paramètres', path: '/settings', icon: SettingsIcon },
     ]
   },
