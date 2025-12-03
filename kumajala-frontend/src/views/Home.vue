@@ -15,16 +15,15 @@ const navigationItems = [
 ];
 
 const handleLogoClick = () => {
-    router.push('/'); // Utilisation de router.push
+    router.push('/'); 
 };
 
 const handleNavClick = (item) => {
     console.log('Nav item clicked:', item.name);
-    // Le router.push est déjà géré par RouterLink dans TopBar
 };
 
 const handleGetStarted = () => {
-    router.push('/translator'); // Utilisation de router.push
+    router.push('/translator'); 
 };
 </script>
 
@@ -43,32 +42,37 @@ const handleGetStarted = () => {
     <section class="hero">
       <div class="hero-content">
         <h1 class="hero-title">
-          Bienvenue sur <span class="highlight">Kumajala</span>
+          La parole qui voyage. <br>
+          <span class="highlight">La culture qui vit.</span>
         </h1>
         <p class="hero-subtitle">
-          Votre voyage vers un environnement plus sain commence ici.
+          Traduisez et écoutez vos textes en langues locales africaines : <br>
+          <strong>Bété, Baoulé, Mooré, Agni.</strong>
         </p>
         <GetStartedButton variant="primary" size="lg" @click="handleGetStarted">
-          Commencer l'aventure
+          Commencer la traduction
         </GetStartedButton>
       </div>
     </section>
 
     <!-- SECTION AVANTAGES / FONCTIONNALITÉS -->
     <section class="features">
-      <h2>Pourquoi choisir Kumajala ?</h2>
+      <h2>Pourquoi utiliser Kumajala ?</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <h3>🌱 Écologique</h3>
-          <p>Réduisez votre impact environnemental en toute simplicité.</p>
+          <div class="icon-wrapper">🌍</div>
+          <h3>Traduction Intelligente</h3>
+          <p>Traduisez instantanément du français vers plusieurs langues locales avec précision.</p>
         </div>
         <div class="feature-card">
-          <h3>⚡ Rapide</h3>
-          <p>Optimisé pour des performances rapides et fluides.</p>
+          <div class="icon-wrapper">🔊</div>
+          <h3>Synthèse Vocale</h3>
+          <p>Écoutez la prononciation de vos traductions pour mieux apprendre et communiquer.</p>
         </div>
         <div class="feature-card">
-          <h3>🛡️ Sécurisé</h3>
-          <p>Vos données sont protégées avec les dernières technologies.</p>
+          <div class="icon-wrapper">🛡️</div>
+          <h3>Patrimoine Culturel</h3>
+          <p>Participez à la préservation et à la valorisation de nos langues maternelles.</p>
         </div>
       </div>
     </section>
@@ -84,137 +88,108 @@ const handleGetStarted = () => {
   justify-content: center;
   text-align: center;
   padding: 120px 20px;
-  background: linear-gradient(to bottom right, var(--cl-gray-100), var(--cl-gray-200)); /* Utilisation des variables */
-  min-height: calc(100vh - 100px); /* Ajuster pour la hauteur de l'en-tête */
+  background: linear-gradient(135deg, var(--cl-gray-100) 0%, #e0e7ff 100%); /* Légère teinte bleutée pour la modernité */
+  min-height: calc(100vh - 80px); 
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .hero-title {
-  font-size: var(--fs-5xl); /* Utilisation des variables */
+  font-size: var(--fs-5xl); 
   color: var(--cl-primary);
-  margin-bottom: var(--space-4); /* Utilisation des variables */
+  margin-bottom: var(--space-6); 
+  line-height: 1.2;
+  font-weight: 800;
 }
 
 .highlight {
   background: linear-gradient(90deg, var(--cl-primary), var(--cl-secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-subtitle {
-  font-size: var(--fs-lg); /* Utilisation des variables */
+  font-size: var(--fs-xl); 
+  color: var(--cl-gray-700);
+  margin-bottom: var(--space-10); 
+  line-height: 1.6;
+}
+
+.hero-subtitle strong {
   color: var(--cl-secondary);
-  margin-bottom: var(--space-8); /* Utilisation des variables */
 }
 
 /* --- FEATURES --- */
 .features {
-  padding: var(--space-20) var(--space-4); /* Utilisation des variables */
+  padding: var(--space-24) var(--space-4); 
   text-align: center;
   background-color: var(--cl-white);
 }
 
 .features h2 {
-  font-size: var(--fs-4xl); /* Utilisation des variables */
-  margin-bottom: var(--space-10); /* Utilisation des variables */
-  color: var(--cl-tertiary); /* Couleur ajustée pour la cohérence */
+  font-size: var(--fs-4xl); 
+  margin-bottom: var(--space-16); 
+  color: var(--cl-primary); 
+  font-weight: 700;
 }
 
 .features-grid {
   display: grid;
-  gap: var(--space-8); /* Utilisation des variables */
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  max-width: 960px; /* Limiter la largeur de la grille */
+  gap: var(--space-8); 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1100px; 
   margin: 0 auto;
 }
 
 .feature-card {
   background: var(--cl-white);
-  padding: var(--space-8); /* Utilisation des variables */
-  border-radius: var(--radius-lg); /* Utilisation des variables */
-  box-shadow: var(--shadow-md);
-  transition: transform 0.3s ease;
+  padding: var(--space-10); 
+  border-radius: var(--radius-xl); 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid var(--cl-gray-200);
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--cl-primary-light);
+}
+
+.icon-wrapper {
+  font-size: 3rem;
+  margin-bottom: var(--space-6);
 }
 
 .feature-card h3 {
   color: var(--cl-primary);
-  margin-bottom: var(--space-4); /* Utilisation des variables */
+  margin-bottom: var(--space-4); 
+  font-size: var(--fs-xl);
+  font-weight: 600;
 }
 
 .feature-card p {
-  color: var(--cl-gray-700); /* Couleur ajustée pour la lisibilité */
-}
-
-/* --- FOOTER --- */
-.site-footer {
-  padding: var(--space-10) var(--space-4); /* Utilisation des variables */
-  background-color: var(--cl-black); /* Couleur ajustée pour un contraste */
-  text-align: center;
-  color: var(--cl-white); /* Texte blanc sur fond sombre */
-  font-size: var(--fs-sm); /* Utilisation des variables */
-}
-
-.site-footer ul {
-  list-style: none;
-  padding: 0;
-  margin-top: var(--space-3); /* Utilisation des variables */
-  display: flex;
-  justify-content: center;
-  gap: var(--space-4); /* Utilisation des variables */
-}
-
-.site-footer a {
-  color: var(--cl-secondary); /* Couleur pour les liens */
-  text-decoration: none;
-  transition: color var(--transition-base);
-}
-
-.site-footer a:hover {
-  color: var(--cl-primary);
+  color: var(--cl-gray-600); 
+  line-height: 1.6;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero {
     padding: 80px 20px;
-    min-height: calc(100vh - 80px);
+    min-height: auto;
   }
   .hero-title {
     font-size: var(--fs-4xl);
   }
   .hero-subtitle {
-    font-size: var(--fs-base);
+    font-size: var(--fs-lg);
   }
   .features {
     padding: 60px 20px;
-  }
-  .features h2 {
-    font-size: var(--fs-3xl);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: var(--fs-3xl);
-  }
-  .hero-subtitle {
-    font-size: var(--fs-sm);
-  }
-  .features h2 {
-    font-size: var(--fs-2xl);
-  }
-  .feature-card {
-    padding: var(--space-6);
-  }
-  .site-footer {
-    padding: var(--space-6) var(--space-3);
   }
 }
 </style>
