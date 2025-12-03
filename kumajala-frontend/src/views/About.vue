@@ -76,9 +76,9 @@ const handleNavClick = (item) => {
             <li>💰 <strong>Investissement</strong> : Financement pour les GPU et l'équipe R&D.</li>
             <li>🤝 <strong>Partenariats</strong> : Universités et centres culturels.</li>
           </ul>
-          <button class="btn btn-primary btn-lg glow-button">
+          <a class="btn btn-primary btn-lg glow-button" href="/contact">
             Contacter l'équipe Fondatrice
-          </button>
+          </a>
         </div>
       </div>
     </section>
