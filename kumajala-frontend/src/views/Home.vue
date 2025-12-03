@@ -371,29 +371,143 @@ const handleGetStarted = () => {
   50% { transform: translateY(-20px); }
 }
 
-/* RESPONSIVE */
-@media (max-width: 968px) {
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    padding: 100px 40px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .orbit-system {
+    transform: scale(0.85);
+  }
+  
+  .roadmap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding-top: 80px;
+    padding: 60px 20px;
+    gap: 2rem;
   }
   
   .hero-content {
     max-width: 100%;
   }
   
+  .hero-title {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
   .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .hero-actions button,
+  .hero-actions a {
+    width: 100%;
     justify-content: center;
   }
   
   .hero-visual {
-    height: 300px;
+    height: 250px;
     width: 100%;
   }
   
   .orbit-system {
-    transform: scale(0.7);
+    transform: scale(0.6);
+  }
+  
+  .orbit-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Roadmap Section */
+  .roadmap {
+    padding: 60px 20px;
+  }
+  
+  .roadmap h2 {
+    font-size: 2rem;
+  }
+  
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .roadmap-card {
+    padding: 1.5rem;
+  }
+  
+  .step-number {
+    font-size: 2rem;
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding: 60px 20px;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-section p {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cta-buttons button,
+  .cta-buttons a {
+    width: 100%;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .orbit-system {
+    transform: scale(0.5);
+  }
+  
+  .roadmap h2,
+  .cta-section h2 {
+    font-size: 1.5rem;
   }
 }
 </style>

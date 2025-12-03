@@ -214,14 +214,90 @@ const handleNavClick = (item) => {
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
 }
 
-@media (max-width: 768px) {
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-hero {
+    padding: 100px 40px;
+  }
+  
   .about-hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  .about-hero {
+    padding: 60px 20px;
+  }
+  
+  .about-hero h1 {
+    font-size: 2.25rem;
+  }
+  
+  .about-hero p {
+    font-size: 1rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .content-card {
+    padding: 1.5rem;
+  }
+  
+  .content-card h2 {
+    font-size: 1.5rem;
   }
   
   .needs-list {
     flex-direction: column;
     gap: 1rem;
+  }
+  
+  .need-item {
+    width: 100%;
+  }
+  
+  .investment-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .investment-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .glow-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .about-hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .about-hero p {
+    font-size: 0.9rem;
+  }
+  
+  .content-card h2 {
+    font-size: 1.25rem;
+  }
+  
+  .investment-section h3 {
+    font-size: 1.25rem;
   }
 }
 </style>

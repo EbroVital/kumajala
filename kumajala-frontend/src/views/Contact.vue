@@ -80,14 +80,14 @@ const handleSubmit = async () => {
               <div class="icon-box"><MailIcon /></div>
               <div>
                 <span class="label">Email</span>
-                <p>frejuste.dev56@gmail.com</p>
+                <p>contact@kumajala.africa</p>
               </div>
             </div>
             <div class="info-item">
               <div class="icon-box"><PhoneIcon /></div>
               <div>
                 <span class="label">Téléphone</span>
-                <p>+225 07 20 63 60 59 | +225 07 59 32 37 87 | +225 07 97 96 52 00</p>
+                <p>+225 07 00 00 00 00</p>
               </div>
             </div>
             <div class="info-item">
@@ -316,15 +316,114 @@ const handleSubmit = async () => {
   color: #FF003C;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contact-hero {
+    padding: 100px 40px;
   }
   
   .page-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  .contact-hero {
+    padding: 60px 20px;
+  }
+  
+  .page-title {
+    font-size: 2.25rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .info-card {
+    padding: 2rem;
+  }
+  
+  .info-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .info-item {
+    gap: 1rem;
+  }
+  
+  .icon-box {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .info-item p {
+    font-size: 1rem;
+  }
+  
+  .form-card {
+    padding: 2rem;
+  }
+  
+  .contact-form {
+    gap: 1.25rem;
+  }
+  
+  .form-group label {
+    font-size: 0.85rem;
+  }
+  
+  .tech-input {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .submit-btn {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+  
+  .alert {
+    font-size: 0.9rem;
+    padding: 0.875rem;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .page-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .info-card,
+  .form-card {
+    padding: 1.5rem;
+  }
+  
+  .info-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .submit-btn {
+    font-size: 0.9rem;
   }
 }
 </style>
-
