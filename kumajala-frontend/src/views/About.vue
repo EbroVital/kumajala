@@ -1,5 +1,6 @@
 <script setup>
 import EnhancedHeader from '@/components/topBar.vue';
+import AfricanPatterns from '@/components/AfricanPatterns.vue';
 import { Home as HomeIcon, Info as InfoIcon, Languages as LanguagesIcon, Settings as SettingsIcon, Target, Users, Zap } from 'lucide-vue-next'; 
 import Footer from '@/components/Footer.vue'; 
 
@@ -32,6 +33,9 @@ const handleNavClick = (item) => {
 
     <!-- SECTION HERO ABOUT -->
     <section class="about-hero">
+      <!-- Mudcloth Pattern Background -->
+      <AfricanPatterns type="mudcloth" colorVariant="secondary" />
+      
       <div class="hero-content">
         <h1>La Vision <span class="text-gradient">Kumajala</span></h1>
         <p class="subtitle">De l'IA générative généraliste vers une souveraineté linguistique africaine.</p>

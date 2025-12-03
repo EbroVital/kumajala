@@ -7,17 +7,45 @@
 
     <!-- Adinkra Symbols (Floating) -->
     <div v-if="type === 'adinkra'" class="adinkra-symbols">
+      <!-- Sankofa: "Return and get it" - Learning from the past -->
       <svg class="adinkra-symbol sankofa" viewBox="0 0 100 100">
         <path d="M50 10 Q30 30 50 50 Q70 30 50 10 M50 50 L50 90 M40 70 Q50 80 60 70" 
               stroke="currentColor" fill="none" stroke-width="3"/>
       </svg>
+      
+      <!-- Gye Nyame: "Except God" - Supremacy of God -->
       <svg class="adinkra-symbol gye-nyame" viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="30" stroke="currentColor" fill="none" stroke-width="3"/>
         <path d="M50 20 L50 80 M20 50 L80 50" stroke="currentColor" stroke-width="3"/>
       </svg>
+      
+      <!-- Dwennimmen: "Ram's horns" - Strength and humility -->
       <svg class="adinkra-symbol dwennimmen" viewBox="0 0 100 100">
         <path d="M30 30 Q50 10 70 30 Q90 50 70 70 Q50 90 30 70 Q10 50 30 30" 
               stroke="currentColor" fill="none" stroke-width="3"/>
+      </svg>
+      
+      <!-- Nkyinkyim: "Twisting" - Initiative, dynamism -->
+      <svg class="adinkra-symbol nkyinkyim" viewBox="0 0 100 100">
+        <path d="M20 50 Q30 30 50 50 Q70 70 80 50 M50 20 Q50 40 50 50 Q50 60 50 80" 
+              stroke="currentColor" fill="none" stroke-width="3"/>
+      </svg>
+      
+      <!-- Aya: "Fern" - Endurance and resourcefulness -->
+      <svg class="adinkra-symbol aya" viewBox="0 0 100 100">
+        <path d="M50 20 L50 80 M30 40 L50 40 M30 60 L50 60 M70 40 L50 40 M70 60 L50 60" 
+              stroke="currentColor" fill="none" stroke-width="3"/>
+        <circle cx="30" cy="40" r="3" fill="currentColor"/>
+        <circle cx="70" cy="40" r="3" fill="currentColor"/>
+        <circle cx="30" cy="60" r="3" fill="currentColor"/>
+        <circle cx="70" cy="60" r="3" fill="currentColor"/>
+      </svg>
+      
+      <!-- Funtunfunefu Denkyemfunefu: "Siamese crocodiles" - Unity in diversity -->
+      <svg class="adinkra-symbol funtun" viewBox="0 0 100 100">
+        <ellipse cx="35" cy="50" rx="15" ry="25" stroke="currentColor" fill="none" stroke-width="2"/>
+        <ellipse cx="65" cy="50" rx="15" ry="25" stroke="currentColor" fill="none" stroke-width="2"/>
+        <circle cx="50" cy="50" r="5" fill="currentColor"/>
       </svg>
     </div>
 
@@ -57,6 +85,11 @@ defineProps({
     type: String,
     default: 'kente',
     validator: (value) => ['kente', 'adinkra', 'mudcloth', 'africa-map'].includes(value)
+  },
+  colorVariant: {
+    type: String,
+    default: 'primary',
+    validator: (value) => ['primary', 'secondary', 'mixed'].includes(value)
   }
 });
 </script>
@@ -128,6 +161,24 @@ defineProps({
   bottom: 20%;
   left: 20%;
   animation-delay: 4s;
+}
+
+.nkyinkyim {
+  top: 30%;
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.aya {
+  bottom: 10%;
+  right: 30%;
+  animation-delay: 3s;
+}
+
+.funtun {
+  top: 70%;
+  left: 60%;
+  animation-delay: 5s;
 }
 
 @keyframes float {
