@@ -80,14 +80,14 @@ const handleSubmit = async () => {
               <div class="icon-box"><MailIcon /></div>
               <div>
                 <span class="label">Email</span>
-                <p>contact@kumajala.africa</p>
+                <p>frejuste.dev56@gmail.com</p>
               </div>
             </div>
             <div class="info-item">
               <div class="icon-box"><PhoneIcon /></div>
               <div>
                 <span class="label">Téléphone</span>
-                <p>+225 07 00 00 00 00</p>
+                <p>+225 07 20 63 60 59 | +225 07 97 96 52 00 | +225 07 59 32 37 87</p>
               </div>
             </div>
             <div class="info-item">
@@ -427,3 +427,4 @@ const handleSubmit = async () => {
   }
 }
 </style>
+
