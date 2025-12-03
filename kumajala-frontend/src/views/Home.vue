@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'; 
 import TopBar from '@/components/topBar.vue'; 
 import GetStartedButton from '@/components/getStartedButton.vue'; 
-import { Home as HomeIcon, Info as InfoIcon, Languages as LanguagesIcon, Settings as SettingsIcon } from 'lucide-vue-next'; 
+import { Home as HomeIcon, Info as InfoIcon, Languages as LanguagesIcon, Settings as SettingsIcon, Database, Cpu, Globe } from 'lucide-vue-next'; 
 import Footer from '@/components/Footer.vue'; 
 
 const router = useRouter();
@@ -28,7 +28,7 @@ const handleGetStarted = () => {
 </script>
 
 <template>
-  <div>
+  <div class="page-wrapper">
     <TopBar
       :nav-items="navigationItems"
       variant="blur"
@@ -40,156 +40,360 @@ const handleGetStarted = () => {
 
     <!-- SECTION HERO -->
     <section class="hero">
+      <div class="hero-bg-glow"></div>
       <div class="hero-content">
+        <div class="prototype-badge">
+          <span class="pulse-dot"></span>
+          PROTOTYPE v0.1
+        </div>
         <h1 class="hero-title">
-          La parole qui voyage. <br>
-          <span class="highlight">La culture qui vit.</span>
+          Le Futur de la <br>
+          <span class="text-gradient text-glow">Traduction Africaine</span>
         </h1>
         <p class="hero-subtitle">
-          Traduisez et écoutez vos textes en langues locales africaines : <br>
-          <strong>Bété, Baoulé, Mooré, Agni.</strong>
+          Propulsé par <span class="highlight-tech">Gemini AI</span>. En route vers notre propre modèle souverain.
+          <br>
+          Traduisez instantanément : <strong>Bété, Baoulé, Mooré, Agni.</strong>
         </p>
-        <GetStartedButton variant="primary" size="lg" @click="handleGetStarted">
-          Commencer la traduction
-        </GetStartedButton>
+        
+        <div class="hero-actions">
+          <GetStartedButton variant="primary" size="lg" @click="handleGetStarted" class="glow-button">
+            Tester le Prototype
+          </GetStartedButton>
+          <button class="btn btn-outline btn-lg neon-border" @click="router.push('/about')">
+            Contribuer au Dataset
+          </button>
+        </div>
+      </div>
+
+      <!-- 3D Element Placeholder (CSS Representation) -->
+      <div class="hero-visual">
+        <div class="orbit-system">
+          <div class="core-sphere"></div>
+          <div class="orbit orbit-1"></div>
+          <div class="orbit orbit-2"></div>
+          <div class="orbit orbit-3"></div>
+          <div class="floating-icon icon-1"><Database /></div>
+          <div class="floating-icon icon-2"><Cpu /></div>
+          <div class="floating-icon icon-3"><Globe /></div>
+        </div>
       </div>
     </section>
 
-    <!-- SECTION AVANTAGES / FONCTIONNALITÉS -->
-    <section class="features">
-      <h2>Pourquoi utiliser Kumajala ?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="icon-wrapper">🌍</div>
-          <h3>Traduction Intelligente</h3>
-          <p>Traduisez instantanément du français vers plusieurs langues locales avec précision.</p>
+    <!-- SECTION ROADMAP / FEATURES -->
+    <section class="roadmap-section">
+      <h2 class="section-title text-center">Notre <span class="text-gradient">Trajectoire</span></h2>
+      <div class="roadmap-grid">
+        <div class="roadmap-card glass-panel active">
+          <div class="step-number">01</div>
+          <h3>Prototype (Actuel)</h3>
+          <p>Validation du concept avec Gemini AI. Traduction et synthèse vocale fonctionnelles.</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-wrapper">🔊</div>
-          <h3>Synthèse Vocale</h3>
-          <p>Écoutez la prononciation de vos traductions pour mieux apprendre et communiquer.</p>
+        <div class="roadmap-card glass-panel">
+          <div class="step-number">02</div>
+          <h3>Collecte de Données</h3>
+          <p>Crowdsourcing massif de phrases et audios pour constituer le dataset Kumajala.</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-wrapper">🛡️</div>
-          <h3>Patrimoine Culturel</h3>
-          <p>Participez à la préservation et à la valorisation de nos langues maternelles.</p>
+        <div class="roadmap-card glass-panel">
+          <div class="step-number">03</div>
+          <h3>Modèle Souverain</h3>
+          <p>Entraînement de notre propre LLM spécialisé sur les langues africaines.</p>
         </div>
       </div>
     </section>
+
+    <!-- SECTION CALL TO ACTION INVESTORS -->
+    <section class="cta-section">
+      <div class="cta-content glass-panel neon-border">
+        <h2>Devenez Pionnier</h2>
+        <p>Nous construisons l'infrastructure linguistique de demain. Rejoignez l'aventure en tant qu'investisseur ou contributeur technique.</p>
+        <button class="btn btn-primary btn-lg glow-button" @click="router.push('/about')">
+          Nous Contacter
+        </button>
+      </div>
+    </section>
+
     <Footer />
   </div>
 </template>
 
 <style scoped>
+.page-wrapper {
+  background-color: var(--cl-bg-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 /* --- HERO --- */
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 20px;
-  background: linear-gradient(135deg, var(--cl-gray-100) 0%, #e0e7ff 100%); /* Légère teinte bleutée pour la modernité */
-  min-height: calc(100vh - 80px); 
+  justify-content: space-between;
+  padding: 120px 5%;
+  min-height: 90vh;
+  position: relative;
+  gap: 4rem;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-content {
-  max-width: 800px;
+  flex: 1;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.prototype-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid var(--cl-primary);
+  border-radius: 20px;
+  color: var(--cl-primary);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--cl-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cl-primary);
+  animation: pulse 2s infinite;
 }
 
 .hero-title {
-  font-size: var(--fs-5xl); 
-  color: var(--cl-primary);
-  margin-bottom: var(--space-6); 
-  line-height: 1.2;
-  font-weight: 800;
-}
-
-.highlight {
-  background: linear-gradient(90deg, var(--cl-primary), var(--cl-secondary));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--cl-white);
 }
 
 .hero-subtitle {
-  font-size: var(--fs-xl); 
-  color: var(--cl-gray-700);
-  margin-bottom: var(--space-10); 
+  font-size: 1.25rem;
+  color: var(--cl-gray-600);
+  margin-bottom: 3rem;
   line-height: 1.6;
 }
 
-.hero-subtitle strong {
+.highlight-tech {
   color: var(--cl-secondary);
+  font-weight: bold;
 }
 
-/* --- FEATURES --- */
-.features {
-  padding: var(--space-24) var(--space-4); 
-  text-align: center;
-  background-color: var(--cl-white);
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
 }
 
-.features h2 {
-  font-size: var(--fs-4xl); 
-  margin-bottom: var(--space-16); 
-  color: var(--cl-primary); 
-  font-weight: 700;
+.glow-button {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
-.features-grid {
+.glow-button:hover {
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* --- HERO VISUAL (3D ORBIT) --- */
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px;
+}
+
+.orbit-system {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+}
+
+.core-sphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, var(--cl-primary), #000);
+  border-radius: 50%;
+  box-shadow: 0 0 50px var(--cl-primary);
+  z-index: 10;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.orbit-1 { width: 200px; height: 200px; animation: rotate 10s linear infinite; border-color: rgba(0, 240, 255, 0.3); }
+.orbit-2 { width: 300px; height: 300px; animation: rotate 15s linear infinite reverse; border-color: rgba(112, 0, 255, 0.3); }
+.orbit-3 { width: 400px; height: 400px; animation: rotate 20s linear infinite; }
+
+.floating-icon {
+  position: absolute;
+  color: var(--cl-white);
+  background: rgba(10, 10, 31, 0.8);
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--cl-gray-700);
+  backdrop-filter: blur(5px);
+}
+
+.icon-1 { top: 20%; left: 20%; animation: float 4s ease-in-out infinite 1s; color: var(--cl-primary); }
+.icon-2 { bottom: 20%; right: 20%; animation: float 5s ease-in-out infinite 2s; color: var(--cl-secondary); }
+.icon-3 { top: 10%; right: 30%; animation: float 6s ease-in-out infinite 0s; color: var(--cl-tertiary); }
+
+/* --- ROADMAP --- */
+.roadmap-section {
+  padding: 100px 5%;
+  background: linear-gradient(to bottom, var(--cl-bg-dark), #0a0a15);
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  color: var(--cl-white);
+}
+
+.roadmap-grid {
   display: grid;
-  gap: var(--space-8); 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-width: 1100px; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.feature-card {
-  background: var(--cl-white);
-  padding: var(--space-10); 
-  border-radius: var(--radius-xl); 
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-  border: 1px solid var(--cl-gray-200);
+.roadmap-card {
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: var(--cl-primary-light);
+.roadmap-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--cl-primary);
 }
 
-.icon-wrapper {
-  font-size: 3rem;
-  margin-bottom: var(--space-6);
+.roadmap-card.active {
+  border-color: var(--cl-primary);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
 }
 
-.feature-card h3 {
+.step-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-weight: 900;
+}
+
+.roadmap-card h3 {
   color: var(--cl-primary);
-  margin-bottom: var(--space-4); 
-  font-size: var(--fs-xl);
-  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
-.feature-card p {
-  color: var(--cl-gray-600); 
-  line-height: 1.6;
+.roadmap-card p {
+  color: var(--cl-gray-500);
+}
+
+/* --- CTA --- */
+.cta-section {
+  padding: 100px 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-content {
+  text-align: center;
+  padding: 4rem;
+  border-radius: 24px;
+  max-width: 800px;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(10, 10, 31, 0.9), rgba(20, 20, 40, 0.9));
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--cl-white);
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: var(--cl-gray-500);
+  margin-bottom: 2.5rem;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .hero {
-    padding: 80px 20px;
-    min-height: auto;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 80px;
   }
-  .hero-title {
-    font-size: var(--fs-4xl);
+  
+  .hero-content {
+    max-width: 100%;
   }
-  .hero-subtitle {
-    font-size: var(--fs-lg);
+  
+  .hero-actions {
+    justify-content: center;
   }
-  .features {
-    padding: 60px 20px;
+  
+  .hero-visual {
+    height: 300px;
+    width: 100%;
+  }
+  
+  .orbit-system {
+    transform: scale(0.7);
   }
 }
 </style>
