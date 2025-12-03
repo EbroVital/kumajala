@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'; 
 import TopBar from '@/components/topBar.vue'; 
 import GetStartedButton from '@/components/getStartedButton.vue'; 
+import AfricanPatterns from '@/components/AfricanPatterns.vue';
 import { Home as HomeIcon, Info as InfoIcon, Languages as LanguagesIcon, Settings as SettingsIcon, Database, Cpu, Globe } from 'lucide-vue-next'; 
 import Footer from '@/components/Footer.vue'; 
 
@@ -40,6 +41,10 @@ const handleGetStarted = () => {
 
     <!-- SECTION HERO -->
     <section class="hero">
+      <!-- African Patterns Background -->
+      <AfricanPatterns type="africa-map" />
+      <AfricanPatterns type="adinkra" />
+      
       <div class="hero-bg-glow"></div>
       <div class="hero-content">
         <div class="prototype-badge">
